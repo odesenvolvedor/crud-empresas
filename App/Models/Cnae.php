@@ -1,4 +1,12 @@
 <?php
+/**
+ * Cnae.php
+ * @see Base
+ *
+ * @package    App/Models
+ * @author     Fernando Campos de Oliveira <fernando@odesenvolvedor.net>
+ * @version    $Id$
+ **/
 
 namespace App\Models;
 

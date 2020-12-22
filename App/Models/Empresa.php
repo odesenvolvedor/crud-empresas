@@ -1,4 +1,12 @@
 <?php
+/**
+ * Empresa.php
+ * @see Base
+ *
+ * @package    App/Models
+ * @author     Fernando Campos de Oliveira <fernando@odesenvolvedor.net>
+ * @version    $Id$
+ **/
 
 namespace App\Models;
 
@@ -11,10 +19,10 @@ class Empresa extends Base
             "nome_fantasia" => "required",
             "cnpj" => "required|cnpj",
             "telefone" => "required",
-            "cnae" => "required",
+            "id_cnae" => "required",
             "cep" => "required",
             "logradouro" => "required",
-            "numero" => "required|number",
+            "numero" => "required",
             "bairro" => "required",
             "sigla_estado" => "required",
             "cidade" => "required",

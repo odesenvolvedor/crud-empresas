@@ -1,4 +1,12 @@
 <?php
+/**
+ * Router.php
+ *
+ * @package    Core
+ * @author     Fernando Campos de Oliveira <fernando@odesenvolvedor.net>
+ * @version    $Id$
+ **/
+
 namespace Core;
 
 class Router

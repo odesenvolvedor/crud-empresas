@@ -1,4 +1,14 @@
 <?php
+/**
+ * EmpresaController.php
+ * @see Controller
+ *
+ * @package    App/Controllers
+ * @author     Fernando Campos de Oliveira <fernando@odesenvolvedor.net>
+ * @version    $Id$
+ **/
+
+
 namespace App\Controllers;
 
 use App\Models\Cnae;

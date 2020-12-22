@@ -1,4 +1,12 @@
 <?php
+/**
+ * Validator.php
+ *
+ * @package    App/Validators
+ * @author     Fernando Campos de Oliveira <fernando@odesenvolvedor.net>
+ * @version    $Id$
+ **/
+
 namespace App\Validators;
 
 class Validator

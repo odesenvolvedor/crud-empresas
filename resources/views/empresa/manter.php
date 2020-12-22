@@ -87,27 +87,27 @@ $route = "manter"
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group <?=error('cnae') ? 'has-error' : ''?>" >
+                        <div class="form-group <?=error('id_cnae') ? 'has-error' : ''?>" >
                             <label for="title"><span class="text-danger">*</span> CNAE</label>
                             <select
                                 class="form-control selectpicker"
                                 data-live-search="true"
                                 data-width="100%"
                                 data-dropup-auto="false"
-                                id="cnae"
-                                name="cnae">
+                                id="id_cnae"
+                                name="id_cnae">
                                 <option value="">Selecione...</option>
-                                <?php foreach ($cnaes as $cnae) { $oldCnae = empty($oldCnae) ? old('cnae') : $oldCnae?>
+                                <?php foreach ($cnaes as $cnae) { $oldCnae = empty($oldCnae) ? old('id_cnae') : $oldCnae?>
                                 <option 
-                                    <?= ( isset($empresa["cnae"]) && $empresa["cnae"] == $cnae['id_cnae'] )
+                                    <?= ( isset($empresa["id_cnae"]) && $empresa["id_cnae"] == $cnae['id_cnae'] )
                                     || $oldCnae == $cnae['id_cnae']
                                     ? "selected" : ''?>
                                     value="<?=$cnae['id_cnae']?>"
                                     ><?=trim($cnae['codigo_cnae'] . ' - ' . $cnae['desc_cnae'])?></option>
                                 <?php } ?>
                             </select>
-                            <?php if (error('cnae')) {?>
-                                <p class="text-danger"><?=error('cnae')?></p>
+                            <?php if (error('id_cnae')) {?>
+                                <p class="text-danger"><?=error('id_cnae')?></p>
                             <?php }?>
                         </div>
                     </div>
@@ -265,12 +265,22 @@ $route = "manter"
                         <div class="form-group">
                             <div class="form-check">
                                 <label class="form-check-label" for="ativo">
-                                    <input class="form-check-input" type="radio" name="situacao" id="ativo" <?=!isset($empresa["ativo"]) || $empresa["ativo"] ? 'checked' : '' ?> />
+                                    <input class="form-check-input" 
+                                           type="radio" 
+                                           name="situacao" 
+                                           id="ativo" 
+                                           value="1"
+                                           <?=!isset($empresa["ativo"]) || $empresa["ativo"] ? 'checked' : '' ?> />
                                     <span class="form-check-label--faux"></span>
                                     Ativa
                                 </label>
                                 <label class="form-check-label" for="inativo">
-                                    <input class="form-check-input" type="radio" name="situacao" id="inativo" <?=isset($empresa["ativo"]) && !$empresa["ativo"] ? 'checked' : '' ?> />
+                                    <input class="form-check-input" 
+                                           type="radio" 
+                                           name="situacao" 
+                                           id="inativo" 
+                                           value="0"
+                                           <?=isset($empresa["ativo"]) && !$empresa["ativo"] ? 'checked' : '' ?> />
                                     <span class="form-check-label--faux"></span>
                                     Inativa
                                 </label>

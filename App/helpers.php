@@ -1,4 +1,13 @@
 <?php 
+/**
+ * helpers.php
+ *
+ * @package    App
+ * @author     Fernando Campos de Oliveira <fernando@odesenvolvedor.net>
+ * @version    $Id$
+ **/
+
+
 
 /**
  * Mascara de CNPJ
