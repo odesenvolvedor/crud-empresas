@@ -248,8 +248,7 @@ $route = "manter"
                             <textarea 
                             class="form-control" 
                             name="observacao"
-                            rows="6">
-                            <?=isset($empresa["observacao"]) ? $empresa["observacao"] : old('observacao')?></textarea>
+                            rows="6"><?=isset($empresa["observacao"]) ? $empresa["observacao"] : old('observacao')?></textarea>
                         </div>
                     </div>
                 </div>
@@ -270,7 +269,7 @@ $route = "manter"
                                            name="situacao" 
                                            id="ativo" 
                                            value="1"
-                                           <?=!isset($empresa["ativo"]) || $empresa["ativo"] ? 'checked' : '' ?> />
+                                           <?=!isset($empresa["situacao"]) || $empresa["situacao"] ? 'checked' : '' ?> />
                                     <span class="form-check-label--faux"></span>
                                     Ativa
                                 </label>
@@ -280,11 +279,14 @@ $route = "manter"
                                            name="situacao" 
                                            id="inativo" 
                                            value="0"
-                                           <?=isset($empresa["ativo"]) && !$empresa["ativo"] ? 'checked' : '' ?> />
+                                           <?=isset($empresa["situacao"]) && !$empresa["situacao"] ? 'checked' : '' ?> />
                                     <span class="form-check-label--faux"></span>
                                     Inativa
                                 </label>
                             </div>
+                            <?php if (error('situacao')) {?>
+                            <p class="text-danger"><?=error('situacao')?></p>
+                            <?php }?>
                         </div>
                     </div>
                 </div>

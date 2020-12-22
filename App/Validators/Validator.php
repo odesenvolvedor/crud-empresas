@@ -53,19 +53,21 @@ class Validator
     {
         foreach ($this->rules as $k => $rules) {
 
+            $value = trim($this->request[$k]);
+
             $rules = \explode('|', $rules);
 
             foreach ($rules as $rule) {
-                if ( $rule == 'required' && empty( trim($this->request[$k]) ) ) {
+                if ( $rule == 'required' && (null == $value || '' == $value) ) {
                     $_SESSION['errors'][$k] = $this->messages[$k][$rule];
                 }
-                if ( $rule == 'number' && !empty( trim($this->request[$k]) ) && !is_numeric(trim($this->request[$k])) ) {
+                if ( $rule == 'number' && (null == $value || '' == $value) && !is_numeric($value) ) {
                     $_SESSION['errors'][$k] = $this->messages[$k][$rule];
                 }
-                if ( $rule == 'email' && !$this->validarEmail(trim($this->request[$k])) ) {
+                if ( $rule == 'email' && !$this->validarEmail($value) ) {
                     $_SESSION['errors'][$k] = $this->messages[$k][$rule];
                 }
-                if ( $rule == 'cnpj'&& !empty(trim($this->request[$k]))  && !$this->validaCnpj(trim($this->request[$k])) ) {
+                if ( $rule == 'cnpj'&& !empty($value) && !$this->validaCnpj($value)) {
                     $_SESSION['errors'][$k] = $this->messages[$k][$rule] ? $this->messages[$k][$rule] : "O Campo $k deve ser um CNPJ válido";
                 }
             }

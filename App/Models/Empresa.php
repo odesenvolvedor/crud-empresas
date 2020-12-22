@@ -26,6 +26,7 @@ class Empresa extends Base
             "bairro" => "required",
             "sigla_estado" => "required",
             "cidade" => "required",
+            "situacao" => "required",
         ];
 
     public static $messages = [
@@ -63,6 +64,9 @@ class Empresa extends Base
             ],
             "cidade" => [
                 "required" => "O campo Cidade é obrigatório",
+            ],
+            "situacao" => [
+                "required" => "O campo Situação é obrigatório",
             ],
         ];
 }
