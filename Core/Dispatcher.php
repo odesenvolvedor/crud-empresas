@@ -19,6 +19,7 @@ class Dispatcher
     {
         try {
             $this->request = new Request();
+
             Router::parse($this->request->url, $this->request);
     
             $controller = $this->loadController();

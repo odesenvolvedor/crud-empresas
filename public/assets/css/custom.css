@@ -49,6 +49,7 @@ h5 {
 
 .form-check-label {
     padding-left: 0;
+    margin-right: 50px;
 }
 
 input[type=checkbox], input[type=radio] {
@@ -116,7 +117,7 @@ input[type=radio]:checked+.form-check-label__label .form-check-label--faux:after
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     border-radius: var(--lwc-borderRadiusCircle, 50%);
-    background: var(--lwc-brandAccessible, rgb(227, 49, 42, 1));
+    background: var(--lwc-brandAccessible, rgb(0, 79, 163, 1));
 }
 
 input[type=checkbox]:checked+.form-check-label_faux:after,
