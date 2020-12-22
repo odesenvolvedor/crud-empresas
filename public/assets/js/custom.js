@@ -75,7 +75,7 @@ function buscarDadosEmpresa(cnpj) {
             $.get(baseUrl + '/cnae/search/' + cnaeMask(data.atividade_principal[0].code), function(data) {
                 data = JSON.parse(data);
                 if (data[0].id_cnae) {
-                    var $select = $('#cnae');
+                    var $select = $('#id_cnae');
                     $select.val(data[0].id_cnae).change().selectpicker('refresh');;
                 }
             });
