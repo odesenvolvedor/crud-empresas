@@ -26,10 +26,12 @@ Executar o script de criação do banco de dados database.sql
 Executar o script de importação da tabela cnae, no arquivo cnae.sql
 
 #### Passo 4
-Caso o deploy seja feito na raíz da aplicação, basta executar o script, exemplo http://localhost
-Caso o deploy seja feito em uma subpasta, será necessário alterar a linha 8, atribuindo o valor para a constante BASE_URL com o nome da subpasta. Então, a aplicação será executada no navegador, chamando http://localhost/nome-da-subpasta
+Caso o deploy seja feito no domínio principal, ou em um subdomínio, a raíz da aplicação deve ser apontada para a pasta public. Feito isto, basta executar o script chamando o domínio no navegador, exemplo http://localhost
+
+Caso o deploy seja feito em uma subpasta, será necessário alterar as linhas 8 e 9, atribuindo o valor para a constante BASE_URL com o nome da subpasta e a constante PUBLIC_PATH atribuindo a ela o valor BASE_URL . 'public'. Então, a aplicação será executada no navegador, chamando http://localhost/nome-da-subpasta
 
 ##### Exemplo
 ```php
-define('BASE_URL', 'crud-empresas');
+define('BASE_URL', 'nome-da-subpasta');
+define('PUBLIC_PATH', BASE_URL . 'public');
 ```
