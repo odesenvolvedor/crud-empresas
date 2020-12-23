@@ -27,10 +27,8 @@ SET time_zone
 -- Despejando dados para a tabela `cnae`
 --
 
-INSERT INTO `cnae` (`
-id_cnae`,
-`codigo_cnae
-`, `desc_cnae`) VALUES
+INSERT INTO `cnae` (`id_cnae`, `codigo_cnae`, `desc_cnae`) 
+VALUES
 (1, '0111-3/01', 'Cultivo de arroz'),
 (2, '0111-3/02', 'Cultivo de milho'),
 (3, '0111-3/03', 'Cultivo de trigo'),
@@ -702,10 +700,8 @@ id_cnae`,
 (669, '4541-2/03', 'Comércio a varejo de motocicletas e motonetas novas'),
 (670, '4541-2/04', 'Comércio a varejo de motocicletas e motonetas usadas'),
 (671, '4541-2/05', 'Comércio a varejo de peças e acessórios para motocicletas e motonetas');
-INSERT INTO `cnae` (`
-id_cnae`,
-`codigo_cnae
-`, `desc_cnae`) VALUES
+INSERT INTO `cnae` (`id_cnae`,`codigo_cnae`, `desc_cnae`) 
+VALUES
 (672, '4542-1/01', 'Representantes comerciais e agentes do comércio de motocicletas e motonetas, peças e acessórios'),
 (673, '4542-1/02', 'Comércio sob consignação de motocicletas e motonetas'),
 (674, '4543-9/00', 'Manutenção e reparação de motocicletas e motonetas'),

@@ -41,6 +41,18 @@ class EmpresaController extends Controller
 
 
     /**
+     * Renderiza a página de listagem de empresas
+     */
+    public function index()
+    {
+        $empresas = $this->empresaModel->all();
+
+        $this->render( "empresa.index", compact('empresas'));
+    }
+
+
+
+    /**
      * Adiciona uma nova empresa ou abre a tela Manter Empresa
      * 
      * Após salvar, redireciona para a lista de empresas
@@ -63,7 +75,57 @@ class EmpresaController extends Controller
             }
         }
 
-        $this->render( "empresa.manter", ['cnaes' => $this->cnaeModel->all()]);
+        $cnaes = $this->cnaeModel->all();
+
+        $this->render( "empresa.manter", compact('cnaes'));
+    }
+
+
+
+    /**
+     * Atualiza uma empresa ou abre a tela Manter Empresa
+     * 
+     * Após salvar, redireciona para a lista de empresas
+     */
+    public function editar( $id )
+    {
+        
+        if ( $_SERVER["REQUEST_METHOD"] == "POST" ) {
+
+            $data = $this->secure_form( $_POST );
+            $this->validate( $data );
+
+            $data['cnpj']           = somenteNumeros( $data['cnpj'] );
+            $data['telefone']       = somenteNumeros( $data['telefone'] );
+            $data['cep']            = somenteNumeros( $data['cep'] );
+            $data['atualizado_em']  = date('Y-m-d H:i:s');
+
+            unset($data['ck_observacao']);
+
+            if ($this->empresaModel->update( $id, $data )) {
+                header( "Location: " . BASE_URL . "/empresa" );
+            }
+        }
+
+        $empresa    = $this->empresaModel->show( $id );
+        $cnaes      = $this->cnaeModel->all();
+
+        $this->render( "empresa.manter", compact('empresa', 'cnaes') );
+    }
+
+
+
+    /**
+     * Remove uma Empresa e redireciona para a 
+     * lista de empresas
+     */
+    public function excluir($id)
+    {
+        if ($this->empresaModel->delete( $id )) {
+
+            header( "Location: " . BASE_URL . "/empresa" );
+
+        }
     }
 
 }

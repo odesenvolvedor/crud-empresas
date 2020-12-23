@@ -14,15 +14,17 @@ class Router
 
     static public function parse($url, $request)
     {
-        $url = str_replace(BASE_URL, '', trim($url));
+        $url = parse_url($url);
 
-        $explode_url = explode('/', $url);
+        $explode_url = explode('/', $url['path']);
         $explode_url = array_slice($explode_url, 1);
 
         if (!empty($explode_url[0])) {
+            $controller = $explode_url[0];
+            $action = isset($explode_url[1]) ? $explode_url[1] : 'index';
 
-            $request->controller = $explode_url[0];
-            $request->action     = isset($explode_url[1]) ? $explode_url[1] : 'index';
+            $request->controller = $controller;
+            $request->action     = $action;
             $request->params     = array_slice($explode_url, 2);
 
         } else {

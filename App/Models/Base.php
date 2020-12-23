@@ -51,7 +51,70 @@ class Base
      */
     public function all()
     {
-        $sql = "SELECT * FROM $this->table";
+        $sql = "SELECT * FROM $this->table WHERE excluido_em IS NULL";
+
+        $filters = $_GET;
+
+        if (isset($filters['excluido_em-not'])) {
+            $sql = "SELECT * FROM $this->table WHERE excluido_em IS NOT NULL";
+        }
+        
+        if (!empty($filters)) {
+            foreach( $filters  as $filter => $value) {
+                $filter = explode('-', $filter);
+
+                if (isset($filter[1])) {
+                    switch ($filter[1]) {
+                        case 'like':
+                            $term = ' ' . $filter[0] . " like '%" . $value . "%'";
+                            $sql .= (' ' . $filters['approach'] . ' ' . $term);
+                        break;
+
+                        case 'not':
+                            $term = ' ' . $filter[0] . " <> '" . $value . "'";
+                            $sql .= (' ' . $filters['approach'] . ' ' . $term);
+                        break;
+
+                        case 'st':
+                            $term = ' ' . $filter[0] . " < '" . $value . "'";
+                            $sql .= (' ' . $filters['approach'] . ' ' . $term);
+                        break;
+
+                        case 'max':
+                            $term = ' ' . $filter[0] . " <= '" . $value . "'";
+                            $sql .= (' ' . $filters['approach'] . ' ' . $term);
+                        break;
+
+                        case 'gt':
+                            $term = ' ' . $filter[0] . " > '" . $value . "'";
+                            $sql .= (' ' . $filters['approach'] . ' ' . $term);
+                        break;
+
+                        case 'min':
+                            $term = ' ' . $filter[0] . " >= '" . $value . "'";
+                            $sql .= (' ' . $filters['approach'] . ' ' . $term);
+                        break;
+
+                        case 'in':
+                            $term = ' ' . $filter[0] . " in (" . $value . ")";
+                            $sql .= (' ' . $filters['approach'] . ' ' . $term);
+                        break;
+
+                        case 'not':
+                            $term = ' ' . $filter[0] . " <> '" . $value . "'";
+                            $sql .= (' ' . $filters['approach'] . ' ' . $term);
+                        break;
+
+                        default:
+                            $term = ' ' . $filter[0] . " = '" . $value . "'";
+                            $sql .= (' ' . $filters['approach'] . ' ' . $term);
+                        break;
+                    }
+
+                }
+            }
+        }
+
         $req = $this->conn->prepare( $sql );
         $req->execute();
 
@@ -124,9 +187,9 @@ class Base
      */
     public function delete( $id )
     {
-        $sql = "DELETE FROM $this->table WHERE id = ?";
+        $sql = "UPDATE $this->table SET excluido_em = ? WHERE id = ?";
         $req = $this->conn->prepare( $sql );
-        return $req->execute( [$id] );
+        return $req->execute( [date('Y-m-d H:i:s'), $id] );
     }
 
 

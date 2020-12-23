@@ -35,7 +35,8 @@ CREATE TABLE `cnae`
 (16) NOT NULL,
   `codigo_cnae` varchar
 (16) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `desc_cnae` text COLLATE utf8mb4_swedish_ci NOT NULL
+  `desc_cnae` text COLLATE utf8mb4_swedish_ci NOT NULL,
+  `excluido_em` datetime DEFAULT NULL COMMENT 'Se preenchido, a empresa estará com situação Excluída'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
